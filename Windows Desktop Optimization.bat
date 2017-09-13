@@ -23,8 +23,8 @@ echo - [Manual] Update Orchestrator Service for Windows Update
 call :manualService UsoSvc
 echo - [Manual] Superfetch
 call :manualService SysMain
-echo - [Disabled] Security Center
-call :disableService wscsvc
+::echo - [Disabled] Security Center
+::call :disableService wscsvc
 echo - [Disabled] Network Connected Devices Auto-Setup
 call :disableService NcdAutoSetup
 echo - [Disabled] Microsoft Windows SMS Router Service
@@ -40,6 +40,8 @@ call :manualService fdPHost
 echo (2/3) Config Registry And Settings
 echo - Disable UAC (NEED REBOOT)
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t REG_DWORD /d 0x0 /f>nul
+::echo - Disable Windows Defender
+::reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t REG_DWORD /d 0x1 /f>nul
 echo - Disable TCP Auto-Tuning
 netsh interface tcp set heuristics disabled>nul
 echo - Hide This PC 6 folders
