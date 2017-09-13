@@ -12,7 +12,6 @@ Run `Windows Desktop Optimization.bat` as Administrator:
   - \[Disabled] Windows Search
   - \[Manual] Update Orchestrator Service for Windows Update
   - \[Manual] Superfetch
-  - \[Disabled] Security Center
   - \[Disabled] Network Connected Devices Auto-Setup
   - \[Disabled] Microsoft Windows SMS Router Service
   - \[Disabled] HomeGroup Provider Server
