@@ -29,6 +29,7 @@ Run `Windows Desktop Optimization.bat` as Administrator:
   - Hide frequently used files in Quick access
   - Hide Recycle bin on Desktop
   - Pin Recycle bin to Quick access
+  - Pin GodMode control panel to Quick access
 
 * Config Appx (for other win10 version)
   - Remove XBox
