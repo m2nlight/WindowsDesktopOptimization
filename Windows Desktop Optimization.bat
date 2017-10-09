@@ -66,10 +66,9 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcon
 ::reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{645FF040-5081-101B-9F08-00AA002F954E}" /f>nul
 ::rem reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{645FF040-5081-101B-9F08-00AA002F954E}" /f>nul 2>nul
 echo - Pin Recycle bin to Quick access
-reg add "HKCR\CLSID\{645FF040-5081-101B-9F08-00AA002F954E}\shell\pintohome" /v "MUIVerb" /t REG_SZ /d "@shell32.dll,-51377" /f>nul
-reg add "HKCR\CLSID\{645FF040-5081-101B-9F08-00AA002F954E}\shell\pintohome\command" /v "DelegateExecute" /t REG_SZ /d "{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}" /f>nul
-PowerShell /Command "&{$o=New-Object -ComObject shell.application;$o.Namespace('shell:::{645FF040-5081-101B-9F08-00AA002F954E}').Self.InvokeVerb('pintohome')}">nul
-reg delete "HKCR\CLSID\{645FF040-5081-101B-9F08-00AA002F954E}\shell\pintohome" /f>nul
+call :pintohomeCLSID {645FF040-5081-101B-9F08-00AA002F954E}
+echo - Pin GodMode control panel to Quick access
+call :pintohomeDir "Control Panel (GodMode).{ED7BA470-8E54-465E-825C-99712043E01C}"
 echo (3/3) Config Appx
 echo - Remove XBox
 call :removeAppx *xbox*
@@ -81,6 +80,18 @@ echo.
 echo Press any key to EXIT...
 pause>nul
 goto :END
+:pintohomeCLSID
+reg add "HKCR\CLSID\%1\shell\pintohome" /v "MUIVerb" /t REG_SZ /d "@shell32.dll,-51377" /f>nul
+reg add "HKCR\CLSID\%1\shell\pintohome\command" /v "DelegateExecute" /t REG_SZ /d "{b455f46e-e4af-4035-b0a4-cf18d2f6f28e}" /f>nul
+PowerShell /Command "&{$o=New-Object -ComObject shell.application;$o.Namespace('shell:::%1').Self.InvokeVerb('pintohome')}">nul
+reg delete "HKCR\CLSID\%1\shell\pintohome" /f>nul
+goto :eof
+:pintohomeDir
+set tmpDir=%userprofile%\Desktop\%~1
+md "%tmpDir%">nul
+PowerShell /Command "&{$o=New-Object -ComObject shell.application;$o.Namespace('%tmpDir%').Self.InvokeVerb('pintohome')}">nul
+rd /q "%tmpDir%">nul
+goto :eof
 :disableService
 call :configService %1 4 null stop
 goto :eof
