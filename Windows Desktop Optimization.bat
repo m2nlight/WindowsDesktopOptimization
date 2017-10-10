@@ -1,6 +1,39 @@
 @echo off
 pushd %~dp0
 set currentuser=%username%
+rem UAC code begin
+set getadminfile="%temp%\getadmin.vbs"
+echo Windows Desktop Optimization
+echo ============================
+echo Starting
+"%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\SYSTEM" >nul 2>nul
+if %ERRORLEVEL% EQU 0 (
+    goto :Admin
+) else (
+    if %ERRORLEVEL% EQU 2 (
+        goto :PathErr
+    ) else (
+        goto :UAC
+    )
+)
+:PathErr
+echo.
+echo Please open "%~n0%~x0" by explorer.exe
+echo.
+echo Press any key to explore the folder...
+pause>nul
+start "" "%SYSTEMROOT%\system32\explorer.exe" /select,"%~f0"
+goto :END
+:UAC
+echo Set sh = CreateObject^("Shell.Application"^) > %getadminfile%
+echo sh.ShellExecute "%~f0", "", "", "runas", 1 >> %getadminfile%
+ping 127.1 -n 1 >nul
+"%SYSTEMROOT%\system32\cscript.exe" %getadminfile%
+goto :END
+:Admin
+if exist %getadminfile% ( del %getadminfile% )
+cls
+rem UAC code end
 echo Windows Desktop Optimization
 echo ============================
 PowerShell /Command "&{Get-WmiObject -Class Win32_OperatingSystem | Select-Object -ExpandProperty Caption}"
@@ -123,4 +156,5 @@ PowerShell /Command "&{Get-AppxPackage %1 | Remove-AppxPackage}">nul
 ::%1 filter
 goto :eof
 :END
+if exist %getadminfile% ( del %getadminfile% )
 popd
