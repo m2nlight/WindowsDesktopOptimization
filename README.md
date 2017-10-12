@@ -30,6 +30,8 @@ Run `Windows Desktop Optimization.bat` as Administrator:
   - Hide Recycle bin on Desktop
   - Pin Recycle bin to Quick access
   - Pin GodMode control panel to Quick access
+  - Disable Application Experience task schedulers
+  - Disable Customer Experience Improvement Program task schedulers
 
 * Config Appx (for other win10 version)
   - Remove XBox

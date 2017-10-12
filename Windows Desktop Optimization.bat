@@ -102,6 +102,14 @@ echo - Pin Recycle bin to Quick access
 call :pintohomeCLSID {645FF040-5081-101B-9F08-00AA002F954E}
 echo - Pin GodMode control panel to Quick access
 call :pintohomeDir "Control Panel (GodMode).{ED7BA470-8E54-465E-825C-99712043E01C}"
+echo - Disable Application Experience task schedulers
+schtasks /change /tn "\Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" /disable>nul 2>nul
+schtasks /change /tn "\Microsoft\Windows\Application Experience\ProgramDataUpdater" /disable>nul 2>nul
+schtasks /change /tn "\Microsoft\Windows\Application Experience\StartupAppTask" /disable>nul 2>nul
+echo - Disable Customer Experience Improvement Program task schedulers
+schtasks /change /tn "\Microsoft\Windows\Customer Experience Improvement Program\Consolidator" /disable>nul 2>nul
+schtasks /change /tn "\Microsoft\Windows\Customer Experience Improvement Program\KernelCeipTask" /disable>nul 2>nul
+schtasks /change /tn "\Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" /disable>nul 2>nul
 echo (3/3) Config Appx
 echo - Remove XBox
 call :removeAppx *xbox*
