@@ -20,20 +20,22 @@ Run `Windows Desktop Optimization.bat` as Administrator:
   - \[Manual] Function Discovery Provider Host
 
 * Config Registry and GroupPolicy
-  - Disable UAC (NEED REBOOT)
+  - Disable UAC (* REBOOT)
   - Disable TCP Auto-Tuning
-  - Hide This PC 6 folders
+  - Hide This PC 7 folders (* RESTART EXPLORER)
   - Show extensions for known file types
   - Open File Explorer to This PC
   - Hide recently used files in Quick access
   - Hide frequently used files in Quick access
   - Hide Recycle bin on Desktop
   - Pin Recycle bin to Quick access
-  - Pin GodMode control panel to Quick access
+  - ~~Pin GodMode control panel to Quick access~~
+  - Disable Windows Feedback
   - Disable Application Experience task schedulers
   - Disable Customer Experience Improvement Program task schedulers
 
 * Config Appx (for other win10 version)
-  - Remove XBox
-  - Remove Zune
-  - Remove Bing
+  - Nothing to do.
+  - ~~Remove XBox~~
+  - ~~Remove Zune~~
+  - ~~Remove Bing~~
