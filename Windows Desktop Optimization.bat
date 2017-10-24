@@ -1,5 +1,4 @@
 @echo off
-Setlocal Enabledelayedexpansion
 pushd %~dp0
 set currentuser=%username%
 rem UAC code begin
