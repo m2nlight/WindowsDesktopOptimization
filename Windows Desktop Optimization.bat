@@ -1,4 +1,5 @@
 @echo off
+Setlocal Enabledelayedexpansion
 pushd %~dp0
 set currentuser=%username%
 rem UAC code begin
@@ -36,7 +37,12 @@ cls
 rem UAC code end
 echo Windows Desktop Optimization
 echo ============================
-PowerShell /Command "&{Get-WmiObject -Class Win32_OperatingSystem | Select-Object -ExpandProperty Caption}"
+::PowerShell /Command "&{Get-WmiObject -Class Win32_OperatingSystem | Select-Object -ExpandProperty Caption}"
+set caption=
+for /f "skip=1 delims=" %%t in ('wmic os get caption') do (
+if not defined caption set caption=%%t
+)
+echo %caption%
 echo Current Domain: %USERDOMAIN%
 echo Current User: %currentuser%
 echo.
