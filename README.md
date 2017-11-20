@@ -10,8 +10,8 @@ Run `Windows Desktop Optimization.bat` as Administrator:
 * Config Service
   - \[Disabled] Windows Update
   - \[Manual] Update Orchestrator Service for Windows Update
-  - ~~ \[Disabled] Windows Search ~~
-  - ~~ \[Manual] Superfetch ~~
+  - ~~\[Disabled] Windows Search~~
+  - ~~\[Manual] Superfetch~~
   - \[Disabled] Network Connected Devices Auto-Setup
   - \[Disabled] Microsoft Windows SMS Router Service
   - \[Disabled] HomeGroup Provider Server
