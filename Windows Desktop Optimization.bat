@@ -55,12 +55,12 @@ goto :END
 echo (1/3) Config Service
 echo - [Disabled] Windows Update
 call :disableService wuauserv
-echo - [Disabled] Windows Search
-call :disableService WSearch
 echo - [Manual] Update Orchestrator Service for Windows Update
 call :manualService UsoSvc
-echo - [Manual] Superfetch
-call :manualService SysMain
+::echo - [Disabled] Windows Search
+::call :disableService WSearch
+::echo - [Manual] Superfetch
+::call :manualService SysMain
 ::echo - [Disabled] Security Center
 ::call :disableService wscsvc
 echo - [Disabled] Network Connected Devices Auto-Setup
@@ -152,9 +152,11 @@ rd /q "%tmpDir%">nul
 goto :eof
 :disableService
 call :configService %1 4 null stop
+sc stop %1>nul
 goto :eof
 :manualService
 call :configService %1 3 null stop
+sc stop %1>nul
 goto :eof
 :configService
 ::%1 is service name (not DisplayName)
