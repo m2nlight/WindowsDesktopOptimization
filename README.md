@@ -10,6 +10,7 @@ Run `Windows Desktop Optimization.bat` as Administrator:
 * Config Service
   - \[Disabled] Windows Update
   - \[Manual] Update Orchestrator Service for Windows Update
+  - \[Disabled] Delivery Optimization
   - ~~\[Disabled] Windows Search~~
   - ~~\[Manual] Superfetch~~
   - \[Disabled] Network Connected Devices Auto-Setup

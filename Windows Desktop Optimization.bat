@@ -57,6 +57,8 @@ echo - [Disabled] Windows Update
 call :disableService wuauserv
 echo - [Manual] Update Orchestrator Service for Windows Update
 call :manualService UsoSvc
+echo - [Disabled] Delivery Optimization
+call :disableService DoSvc
 ::echo - [Disabled] Windows Search
 ::call :disableService WSearch
 ::echo - [Manual] Superfetch
@@ -152,11 +154,11 @@ rd /q "%tmpDir%">nul
 goto :eof
 :disableService
 call :configService %1 4 null stop
-sc stop %1>nul
+sc stop %1 >nul
 goto :eof
 :manualService
 call :configService %1 3 null stop
-sc stop %1>nul
+sc stop %1 >nul
 goto :eof
 :configService
 ::%1 is service name (not DisplayName)
