@@ -65,18 +65,18 @@ call :disableService DoSvc
 ::call :manualService SysMain
 ::echo - [Disabled] Security Center
 ::call :disableService wscsvc
-echo - [Disabled] Network Connected Devices Auto-Setup
-call :disableService NcdAutoSetup
-echo - [Disabled] Microsoft Windows SMS Router Service
-call :disableService SmsRouter
+::echo - [Disabled] Network Connected Devices Auto-Setup
+::call :disableService NcdAutoSetup
+::echo - [Disabled] Microsoft Windows SMS Router Service
+::call :disableService SmsRouter
 echo - [Disabled] HomeGroup Provider Server
 call :disableService HomeGroupProvider
 echo - [Disabled] HomeGroup Listener Server
 call :disableService HomeGroupListener
-echo - [Manual] Function Discovery Resource Publication
-call :manualService FDResPub
-echo - [Manual] Function Discovery Provider Host
-call :manualService fdPHost
+::echo - [Manual] Function Discovery Resource Publication
+::call :manualService FDResPub
+::echo - [Manual] Function Discovery Provider Host
+::call :manualService fdPHost
 echo (2/3) Config Registry And Settings
 echo - Disable UAC (* REBOOT)
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v "EnableLUA" /t REG_DWORD /d 0x0 /f>nul

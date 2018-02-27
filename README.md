@@ -13,12 +13,12 @@ Run `Windows Desktop Optimization.bat` as Administrator:
   - \[Disabled] Delivery Optimization
   - ~~\[Disabled] Windows Search~~
   - ~~\[Manual] Superfetch~~
-  - \[Disabled] Network Connected Devices Auto-Setup
-  - \[Disabled] Microsoft Windows SMS Router Service
+  - ~~\[Disabled] Network Connected Devices Auto-Setup~~
+  - ~~\[Disabled] Microsoft Windows SMS Router Service~~
   - \[Disabled] HomeGroup Provider Server
   - \[Disabled] HomeGroup Listener Server
-  - \[Manual] Function Discovery Resource Publication
-  - \[Manual] Function Discovery Provider Host
+  - ~~\[Manual] Function Discovery Resource Publication~~
+  - ~~\[Manual] Function Discovery Provider Host~~
 
 * Config Registry and GroupPolicy
   - Disable UAC (* REBOOT)
